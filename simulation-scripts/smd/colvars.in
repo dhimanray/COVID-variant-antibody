@@ -1,0 +1,31 @@
+colvarsTrajFrequency    25  
+
+
+colvar {
+  name r
+
+  distance {
+    group1 {
+      atomNumbersRange 1-3014  #Use atoms of the correct RBD
+    }
+    group2 {
+      atomNumbersRange 3015-9491  #Use atoms of the Antibody
+    }
+  }
+  width 1.0
+  upperboundary 100.0
+  lowerboundary 0.0
+
+
+}
+
+#perform steered molecular dynamics
+harmonic {
+  colvars rbdDeviation
+  centers 47.5
+  targetCenters 67.5
+  targetNumSteps 2500000
+  outputCenters on
+  outputAccumulatedWork on
+}
+
